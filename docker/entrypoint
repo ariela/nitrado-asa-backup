@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+printenv | awk '{print "export " $1}' > /env.sh
+exec "$0"

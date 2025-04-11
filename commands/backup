@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+BACKUP_PREFIX=$(date +"%Y%m%d-%H%M")
+BACKUP_PATH=/backup/${BACKUP_PREFIX}
+
+mkdir -p ${BACKUP_PATH}
+cd ${BACKUP_PATH}
+
+wget -r ftp://${FTP_USER}:${FTP_PASS}@${FTP_HOST}${FTP_PATH}"
+tar cJvf ../${BACKUP_PREFIX}.tar.xz *
+
+cd ..
+rm -rf ${BACKUP_PATH}

@@ -1,0 +1,4 @@
+* * * * * /usr/local/bin/minutely
+0 * * * * /usr/local/bin/hourly
+0 0 * * * /usr/local/bin/daily
+0 0 1 * * /usr/local/bin/monthly
