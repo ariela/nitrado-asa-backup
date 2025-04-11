@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
+echo "[$(date +"%Y-%m-%d %H:%M:%S")] Execute backup job."
+
+. /env.sh
+
 BACKUP_PREFIX=$(date +"%Y%m%d-%H%M")
 BACKUP_PATH=/backup/${BACKUP_PREFIX}
 
 mkdir -p ${BACKUP_PATH}
 cd ${BACKUP_PATH}
 
-wget -r ftp://${FTP_USER}:${FTP_PASS}@${FTP_HOST}${FTP_PATH}"
-tar cJvf ../${BACKUP_PREFIX}.tar.xz *
+wget -r -np -l 0 -R gz ftp://${FTP_USER}:${FTP_PASS}@${FTP_HOST}${FTP_PATH}
+cd ${FTP_HOST}${FTP_PATH}
+tar cJvf /backup/${BACKUP_PREFIX}.tar.xz *
 
-cd ..
+cd /backup/
 rm -rf ${BACKUP_PATH}

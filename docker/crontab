@@ -1,4 +1,5 @@
-* * * * * /usr/local/bin/minutely
-0 * * * * /usr/local/bin/hourly
-0 0 * * * /usr/local/bin/daily
-0 0 1 * * /usr/local/bin/monthly
+#* * * * * /usr/local/bin/minutely 1>>/proc/1/fd/1 2>>/proc/1/fd/2
+#0 * * * * /usr/local/bin/hourly 1>>/proc/1/fd/1 2>>/proc/1/fd/2
+#0 0 * * * /usr/local/bin/daily 1>>/proc/1/fd/1 2>>/proc/1/fd/2
+#0 0 1 * * /usr/local/bin/monthly 1>>/proc/1/fd/1 2>>/proc/1/fd/2
+0 * * * * /commands/backup 1>>/proc/1/fd/1 2>>/proc/1/fd/2
